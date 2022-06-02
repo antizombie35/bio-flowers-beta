@@ -1,2 +1,7 @@
-# bio-flowers-beta
-bio flowers beta repo
+# bio
+
+"working as intended"
+
+# requirements
+
+win10+
