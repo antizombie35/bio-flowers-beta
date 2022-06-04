@@ -75,7 +75,6 @@ namespace flowers
             flowerIndexRaw = flowerIndexRaw.Remove(flowerIndexRaw.Length-1);
             flowerIndexRaw = flowerIndexRaw.Remove(0,0);
             flowerIndex = flowerIndexRaw.Split(',');
-            Console.WriteLine("r= " + flowerIndexRaw);
             flowersN = rawFlowers.Length;
             isReady = true;
         }
