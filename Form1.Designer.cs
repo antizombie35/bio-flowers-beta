@@ -82,10 +82,10 @@
             // 
             // StartBut
             // 
-            this.StartBut.Location = new System.Drawing.Point(618, 37);
+            this.StartBut.Location = new System.Drawing.Point(12, 430);
             this.StartBut.Margin = new System.Windows.Forms.Padding(2);
             this.StartBut.Name = "StartBut";
-            this.StartBut.Size = new System.Drawing.Size(207, 25);
+            this.StartBut.Size = new System.Drawing.Size(827, 42);
             this.StartBut.TabIndex = 5;
             this.StartBut.Text = "START";
             this.StartBut.UseVisualStyleBackColor = true;
@@ -93,24 +93,26 @@
             // 
             // ans1But
             // 
-            this.ans1But.Location = new System.Drawing.Point(145, 403);
+            this.ans1But.Location = new System.Drawing.Point(11, 344);
             this.ans1But.Margin = new System.Windows.Forms.Padding(2);
             this.ans1But.Name = "ans1But";
-            this.ans1But.Size = new System.Drawing.Size(207, 25);
+            this.ans1But.Size = new System.Drawing.Size(412, 195);
             this.ans1But.TabIndex = 6;
             this.ans1But.Text = "Ans1";
             this.ans1But.UseVisualStyleBackColor = true;
+            this.ans1But.Visible = false;
             this.ans1But.Click += new System.EventHandler(this.ans1But_Click);
             // 
             // ans2But
             // 
-            this.ans2But.Location = new System.Drawing.Point(544, 403);
+            this.ans2But.Location = new System.Drawing.Point(427, 344);
             this.ans2But.Margin = new System.Windows.Forms.Padding(2);
             this.ans2But.Name = "ans2But";
-            this.ans2But.Size = new System.Drawing.Size(207, 25);
+            this.ans2But.Size = new System.Drawing.Size(412, 195);
             this.ans2But.TabIndex = 7;
             this.ans2But.Text = "Ans2";
             this.ans2But.UseVisualStyleBackColor = true;
+            this.ans2But.Visible = false;
             this.ans2But.Click += new System.EventHandler(this.ans2But_Click);
             // 
             // main
@@ -118,9 +120,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 550);
+            this.Controls.Add(this.StartBut);
             this.Controls.Add(this.ans2But);
             this.Controls.Add(this.ans1But);
-            this.Controls.Add(this.StartBut);
             this.Controls.Add(this.picBoxFlower);
             this.Controls.Add(this.butMinimalizeWin);
             this.Controls.Add(this.butExit);
