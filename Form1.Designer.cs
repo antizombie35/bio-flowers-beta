@@ -35,6 +35,9 @@
             this.StartBut = new System.Windows.Forms.Button();
             this.ans1But = new System.Windows.Forms.Button();
             this.ans2But = new System.Windows.Forms.Button();
+            this.startInfo = new System.Windows.Forms.Label();
+            this.rAnsCLabel = new System.Windows.Forms.Label();
+            this.wAnsCLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.winMoving)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxFlower)).BeginInit();
             this.SuspendLayout();
@@ -115,11 +118,43 @@
             this.ans2But.Visible = false;
             this.ans2But.Click += new System.EventHandler(this.ans2But_Click);
             // 
+            // startInfo
+            // 
+            this.startInfo.AutoSize = true;
+            this.startInfo.Location = new System.Drawing.Point(12, 31);
+            this.startInfo.Name = "startInfo";
+            this.startInfo.Size = new System.Drawing.Size(119, 52);
+            this.startInfo.TabIndex = 8;
+            this.startInfo.Text = "load successful!\r\nloaded from: flowers.flist\r\nversion 1.2 beta \r\nmade by A35\r\n";
+            // 
+            // rAnsCLabel
+            // 
+            this.rAnsCLabel.AutoSize = true;
+            this.rAnsCLabel.Location = new System.Drawing.Point(668, 70);
+            this.rAnsCLabel.Name = "rAnsCLabel";
+            this.rAnsCLabel.Size = new System.Drawing.Size(53, 13);
+            this.rAnsCLabel.TabIndex = 9;
+            this.rAnsCLabel.Text = "RIGHT: 0";
+            this.rAnsCLabel.Visible = false;
+            // 
+            // wAnsCLabel
+            // 
+            this.wAnsCLabel.AutoSize = true;
+            this.wAnsCLabel.Location = new System.Drawing.Point(668, 134);
+            this.wAnsCLabel.Name = "wAnsCLabel";
+            this.wAnsCLabel.Size = new System.Drawing.Size(62, 13);
+            this.wAnsCLabel.TabIndex = 10;
+            this.wAnsCLabel.Text = "WRONG: 0";
+            this.wAnsCLabel.Visible = false;
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 550);
+            this.Controls.Add(this.wAnsCLabel);
+            this.Controls.Add(this.rAnsCLabel);
+            this.Controls.Add(this.startInfo);
             this.Controls.Add(this.StartBut);
             this.Controls.Add(this.ans2But);
             this.Controls.Add(this.ans1But);
@@ -135,6 +170,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.winMoving)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxFlower)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -147,6 +183,9 @@
         private System.Windows.Forms.Button StartBut;
         private System.Windows.Forms.Button ans1But;
         private System.Windows.Forms.Button ans2But;
+        private System.Windows.Forms.Label startInfo;
+        private System.Windows.Forms.Label rAnsCLabel;
+        private System.Windows.Forms.Label wAnsCLabel;
     }
 }
 

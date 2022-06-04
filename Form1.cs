@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.IO;
 using System.Windows.Forms;
-using System.Net;
-using Json.Net;
-using Newtonsoft.Json;
-using System.Text.Json;
-using System.Text.Json.Nodes;
+using System.Drawing;
 
 namespace flowers
 {
@@ -33,6 +29,9 @@ namespace flowers
 
         public static int wAnsIndex = 0;
         public static string wAns = ""; 
+        
+        public static int rAnsN = 0;
+        public static int wAnsN = 0;
 
         public static Random r = new Random();
         public static string[] flowerIndex = {};
@@ -69,6 +68,7 @@ namespace flowers
 
         public void mainLoad(object sender, EventArgs e)
         {
+            Icon = new Icon(@"icon.ico");
             rawFlowers = System.IO.File.ReadAllLines(@"flowers.flist");
             flowerIndex = rawFlowers[0].Split(',');
             flowersN = rawFlowers.Length;
@@ -79,11 +79,11 @@ namespace flowers
         {
             rAnsIndex = r.Next(1, flowersN);
             rAns = flowerIndex[rAnsIndex]; //roll index
-            Console.WriteLine(rAns);
+            //Console.WriteLine(rAns);
             linkAnsLine = rawFlowers[rAnsIndex]; //line linkde by index
             rAnsLinks = linkAnsLine.Split(','); //split line to strings
             rAnsLink = rAnsLinks[r.Next(1, rAnsLinks.Length)]; //ch link
-            Console.WriteLine(rAnsLink);
+            //Console.WriteLine(rAnsLink);
             picBoxFlower.Load(rAnsLink);
 
             rBut = r.Next(1, 3);
@@ -114,7 +114,11 @@ namespace flowers
                 ans1But.Visible = true;
                 ans2But.Visible = true;
                 StartBut.Visible = false;
-            }else{
+                startInfo.Visible = false;
+                rAnsCLabel.Visible = true;
+                wAnsCLabel.Visible = true;
+            }
+            else{
                 MessageBox.Show("obj0 not loaded properly! restart the program");
             }
 
@@ -132,13 +136,15 @@ namespace flowers
 
         public void verify(int ans)
         {
-            if (ans == rBut) //TODO
+            if (ans == rBut)
             {
-                MessageBox.Show("Correct!");
+                rAnsN++;
+                rAnsCLabel.Text = "RIGHT: " + rAnsN.ToString();
             }
             else
             {
-                MessageBox.Show("Wrong!");
+                wAnsN++;
+                wAnsCLabel.Text = "WRONG: " + wAnsN.ToString();
             }
             Question();
         }
