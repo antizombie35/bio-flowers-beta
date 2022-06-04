@@ -41,6 +41,7 @@
             this.StartGuessingBut = new System.Windows.Forms.Button();
             this.GuessNextBut = new System.Windows.Forms.Button();
             this.GuessAnsLab = new System.Windows.Forms.Label();
+            this.SupportLinkLab = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.winMoving)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxFlower)).BeginInit();
             this.SuspendLayout();
@@ -128,7 +129,7 @@
             this.startInfo.Name = "startInfo";
             this.startInfo.Size = new System.Drawing.Size(119, 52);
             this.startInfo.TabIndex = 8;
-            this.startInfo.Text = "load successful!\r\nloaded from: flowers.flist\r\nversion 1.3 beta \r\nmade by A35\r\n";
+            this.startInfo.Text = "load successful!\r\nloaded from: flowers.flist\r\nversion 1.4 beta \r\nmade by A35\r\n";
             // 
             // rAnsCLabel
             // 
@@ -168,7 +169,7 @@
             this.GuessNextBut.Name = "GuessNextBut";
             this.GuessNextBut.Size = new System.Drawing.Size(827, 42);
             this.GuessNextBut.TabIndex = 12;
-            this.GuessNextBut.Text = "CLICK";
+            this.GuessNextBut.Text = "NEXT";
             this.GuessNextBut.UseVisualStyleBackColor = true;
             this.GuessNextBut.Visible = false;
             this.GuessNextBut.Click += new System.EventHandler(this.GuessNextBut_Click);
@@ -183,11 +184,24 @@
             this.GuessAnsLab.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.GuessAnsLab.Visible = false;
             // 
+            // SupportLinkLab
+            // 
+            this.SupportLinkLab.AutoSize = true;
+            this.SupportLinkLab.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.SupportLinkLab.Location = new System.Drawing.Point(12, 83);
+            this.SupportLinkLab.Name = "SupportLinkLab";
+            this.SupportLinkLab.Size = new System.Drawing.Size(369, 13);
+            this.SupportLinkLab.TabIndex = 14;
+            this.SupportLinkLab.TabStop = true;
+            this.SupportLinkLab.Text = "Help us expand and correct the list of flowers and pictures (opens in browser)";
+            this.SupportLinkLab.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SupportLinkLab_LinkClicked);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 550);
+            this.Controls.Add(this.SupportLinkLab);
             this.Controls.Add(this.GuessAnsLab);
             this.Controls.Add(this.GuessNextBut);
             this.Controls.Add(this.StartGuessingBut);
@@ -228,6 +242,7 @@
         private System.Windows.Forms.Button StartGuessingBut;
         private System.Windows.Forms.Button GuessNextBut;
         private System.Windows.Forms.Label GuessAnsLab;
+        private System.Windows.Forms.LinkLabel SupportLinkLab;
     }
 }
 

@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.IO;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace flowers
 {
@@ -72,40 +67,58 @@ namespace flowers
         public void mainLoad(object sender, EventArgs e)
         {
             Icon = new Icon(@"icon.ico");
-            rawFlowers = System.IO.File.ReadAllLines(@"flowers.flist");
+            rawFlowers = System.IO.File.ReadAllLines(@"flowers.flist");             //raw flowers
+            string rawflowersIndex = System.IO.File.ReadAllText(@"flowers.flist");  //raw index
             flowerIndex = rawFlowers[0].Split(',');
+
+            string flowerIndexRaw = Regex.Replace(rawflowersIndex, "(?<==).*(?=\n)", "").Replace(" =","").Replace("\n",",");       //*
+            flowerIndexRaw = flowerIndexRaw.Remove(flowerIndexRaw.Length-1);
+            flowerIndexRaw = flowerIndexRaw.Remove(0,0);
+            flowerIndex = flowerIndexRaw.Split(',');
+            Console.WriteLine("r= " + flowerIndexRaw);
             flowersN = rawFlowers.Length;
             isReady = true;
         }
         
         public void Question()
         {
-            rAnsIndex = r.Next(1, flowersN); //roll index
-            rAns = flowerIndex[rAnsIndex]; //find linked word
-            //Console.WriteLine(rAns);
-            linkAnsLine = rawFlowers[rAnsIndex]; //line linkde by index
-            rAnsLinks = linkAnsLine.Split(','); //split line to strings
-            rAnsLink = rAnsLinks[r.Next(1, rAnsLinks.Length)]; //ch link
-            //Console.WriteLine(rAnsLink);
-            picBoxFlower.Load(rAnsLink);
-
-            rBut = r.Next(1, 3);
-            wAnsCh:
-            wAnsIndex = r.Next(1, flowersN);
-            if (rAnsIndex == wAnsIndex)
+            Question:
+            try
             {
-                goto wAnsCh;
+                rAnsIndex = r.Next(0, flowersN); //roll index
+                rAns = flowerIndex[rAnsIndex]; //find linked word
+                Console.WriteLine(rAns);
+                linkAnsLine = rawFlowers[rAnsIndex]; //line linkde by index
+                rAnsLinks = linkAnsLine.Split(','); //split line to strings
+                rAnsLink = rAnsLinks[r.Next(0, rAnsLinks.Length)]; //ch link
+                Console.WriteLine(rAnsLink);
+                picBoxFlower.Load(rAnsLink);
+
+                rBut = r.Next(1, 3);
+                wAnsIndex = r.Next(0, flowersN);
+                if (rAnsIndex == wAnsIndex)
+                {
+                    goto Question;
+                }
+
+                wAns = flowerIndex[wAnsIndex];
+                if (rBut == 1)
+                {
+                    ans1But.Text = rAns;
+                    ans2But.Text = wAns;
+                }
+                else
+                {
+                    ans1But.Text = wAns;
+                    ans2But.Text = rAns;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("error");
+                goto Question;
             }
 
-            wAns = flowerIndex[wAnsIndex];
-            if (rBut == 1)
-            {
-                ans1But.Text = rAns;
-                ans2But.Text = wAns;
-            }else{
-                ans1But.Text = wAns;
-                ans2But.Text = rAns;
-            }
 
         }
         
@@ -121,6 +134,7 @@ namespace flowers
                 wAnsCLabel.Visible = true;
                 StartGuessingBut.Visible = false;
                 GuessNextBut.Visible = false;
+                SupportLinkLab.Visible = false;
                 Question();
             }
             else{
@@ -163,6 +177,7 @@ namespace flowers
                 StartGuessingBut.Visible = false;
                 GuessNextBut.Visible = false;
                 GuessNextBut.Visible =true;
+                SupportLinkLab.Visible = false;
                 Quess();
             }
             else
@@ -173,29 +188,38 @@ namespace flowers
         
         public void Quess()
         {
-            switch(guessState)
+        Quess:
+            try
             {
-                case 0:
-                    rAnsIndex = r.Next(1, flowersN); //roll index
-                    rAns = flowerIndex[rAnsIndex]; //find linked word
-                    //Console.WriteLine(rAns);
-                    linkAnsLine = rawFlowers[rAnsIndex]; //line linkde by index
-                    rAnsLinks = linkAnsLine.Split(','); //split line to strings
-                    rAnsLink = rAnsLinks[r.Next(1, rAnsLinks.Length)]; //ch link
-                    //Console.WriteLine(rAnsLink);
-                    picBoxFlower.Load(rAnsLink);
-                    GuessAnsLab.Visible = false;
-                    break;
+                switch(guessState)
+                {
+                    case 0:
+                        rAnsIndex = r.Next(0, flowersN); //roll index
+                        rAns = flowerIndex[rAnsIndex]; //find linked word
+                        Console.WriteLine(rAns);
+                        linkAnsLine = rawFlowers[rAnsIndex]; //line linkde by index
+                        rAnsLinks = linkAnsLine.Split(','); //split line to strings
+                        rAnsLink = rAnsLinks[r.Next(0, rAnsLinks.Length)]; //ch link
+                        Console.WriteLine(rAnsLink);
+                        picBoxFlower.Load(rAnsLink);
+                        GuessAnsLab.Visible = false;
+                        break;
 
-                case 1:
-                    GuessAnsLab.Text = rAns;
-                    GuessAnsLab.Visible = true;
-                    break;
+                    case 1:
+                        GuessAnsLab.Text = rAns;
+                        GuessAnsLab.Visible = true;
+                        break;
                     
-                default:
-                    MessageBox.Show("error");
-                    break;
+                    default:
+                        MessageBox.Show("error");
+                        break;
+                }
             }
+            catch
+            {
+                goto Quess;
+            }
+
             guessState++;
             guessState = guessState % 2 ;;
         }
@@ -203,6 +227,11 @@ namespace flowers
         private void GuessNextBut_Click(object sender, EventArgs e)
         {
             Quess();
+        }
+
+        private void SupportLinkLab_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://docs.google.com/spreadsheets/d/1iW5f8xUUuDp5pVIRJRww_3FVjXcryEUrwIsB_akfFrQ/edit?usp=sharing");
         }
     }
 }
