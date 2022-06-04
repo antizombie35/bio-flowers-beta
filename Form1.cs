@@ -36,6 +36,9 @@ namespace flowers
         public static Random r = new Random();
         public static string[] flowerIndex = {};
         public static int flowersN = 0;
+        
+        //guessing
+        public static int guessState = 0;
 
 
         #region drag window part
@@ -77,8 +80,8 @@ namespace flowers
         
         public void Question()
         {
-            rAnsIndex = r.Next(1, flowersN);
-            rAns = flowerIndex[rAnsIndex]; //roll index
+            rAnsIndex = r.Next(1, flowersN); //roll index
+            rAns = flowerIndex[rAnsIndex]; //find linked word
             //Console.WriteLine(rAns);
             linkAnsLine = rawFlowers[rAnsIndex]; //line linkde by index
             rAnsLinks = linkAnsLine.Split(','); //split line to strings
@@ -106,17 +109,19 @@ namespace flowers
 
         }
         
-        private void StartBut_Click(object sender, EventArgs e)
+        private void StartABBut_Click(object sender, EventArgs e)
         {
             if (isReady)
             {
-                Question();
                 ans1But.Visible = true;
                 ans2But.Visible = true;
                 StartBut.Visible = false;
                 startInfo.Visible = false;
                 rAnsCLabel.Visible = true;
                 wAnsCLabel.Visible = true;
+                StartGuessingBut.Visible = false;
+                GuessNextBut.Visible = false;
+                Question();
             }
             else{
                 MessageBox.Show("obj0 not loaded properly! restart the program");
@@ -147,6 +152,57 @@ namespace flowers
                 wAnsCLabel.Text = "WRONG: " + wAnsN.ToString();
             }
             Question();
+        }
+
+        private void StartGuessingBut_Click(object sender, EventArgs e)
+        {
+            if (isReady)
+            {
+                StartBut.Visible = false;
+                startInfo.Visible = false;
+                StartGuessingBut.Visible = false;
+                GuessNextBut.Visible = false;
+                GuessNextBut.Visible =true;
+                Quess();
+            }
+            else
+            {
+                MessageBox.Show("obj0 not loaded properly! restart the program");
+            }
+        }
+        
+        public void Quess()
+        {
+            switch(guessState)
+            {
+                case 0:
+                    rAnsIndex = r.Next(1, flowersN); //roll index
+                    rAns = flowerIndex[rAnsIndex]; //find linked word
+                    //Console.WriteLine(rAns);
+                    linkAnsLine = rawFlowers[rAnsIndex]; //line linkde by index
+                    rAnsLinks = linkAnsLine.Split(','); //split line to strings
+                    rAnsLink = rAnsLinks[r.Next(1, rAnsLinks.Length)]; //ch link
+                    //Console.WriteLine(rAnsLink);
+                    picBoxFlower.Load(rAnsLink);
+                    GuessAnsLab.Visible = false;
+                    break;
+
+                case 1:
+                    GuessAnsLab.Text = rAns;
+                    GuessAnsLab.Visible = true;
+                    break;
+                    
+                default:
+                    MessageBox.Show("error");
+                    break;
+            }
+            guessState++;
+            guessState = guessState % 2 ;;
+        }
+
+        private void GuessNextBut_Click(object sender, EventArgs e)
+        {
+            Quess();
         }
     }
 }

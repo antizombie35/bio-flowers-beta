@@ -38,6 +38,9 @@
             this.startInfo = new System.Windows.Forms.Label();
             this.rAnsCLabel = new System.Windows.Forms.Label();
             this.wAnsCLabel = new System.Windows.Forms.Label();
+            this.StartGuessingBut = new System.Windows.Forms.Button();
+            this.GuessNextBut = new System.Windows.Forms.Button();
+            this.GuessAnsLab = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.winMoving)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxFlower)).BeginInit();
             this.SuspendLayout();
@@ -90,9 +93,9 @@
             this.StartBut.Name = "StartBut";
             this.StartBut.Size = new System.Drawing.Size(827, 42);
             this.StartBut.TabIndex = 5;
-            this.StartBut.Text = "START";
+            this.StartBut.Text = "START A/B";
             this.StartBut.UseVisualStyleBackColor = true;
-            this.StartBut.Click += new System.EventHandler(this.StartBut_Click);
+            this.StartBut.Click += new System.EventHandler(this.StartABBut_Click);
             // 
             // ans1But
             // 
@@ -125,7 +128,7 @@
             this.startInfo.Name = "startInfo";
             this.startInfo.Size = new System.Drawing.Size(119, 52);
             this.startInfo.TabIndex = 8;
-            this.startInfo.Text = "load successful!\r\nloaded from: flowers.flist\r\nversion 1.2 beta \r\nmade by A35\r\n";
+            this.startInfo.Text = "load successful!\r\nloaded from: flowers.flist\r\nversion 1.3 beta \r\nmade by A35\r\n";
             // 
             // rAnsCLabel
             // 
@@ -147,11 +150,47 @@
             this.wAnsCLabel.Text = "WRONG: 0";
             this.wAnsCLabel.Visible = false;
             // 
+            // StartGuessingBut
+            // 
+            this.StartGuessingBut.Location = new System.Drawing.Point(12, 384);
+            this.StartGuessingBut.Margin = new System.Windows.Forms.Padding(2);
+            this.StartGuessingBut.Name = "StartGuessingBut";
+            this.StartGuessingBut.Size = new System.Drawing.Size(827, 42);
+            this.StartGuessingBut.TabIndex = 11;
+            this.StartGuessingBut.Text = "START GUEESING";
+            this.StartGuessingBut.UseVisualStyleBackColor = true;
+            this.StartGuessingBut.Click += new System.EventHandler(this.StartGuessingBut_Click);
+            // 
+            // GuessNextBut
+            // 
+            this.GuessNextBut.Location = new System.Drawing.Point(11, 476);
+            this.GuessNextBut.Margin = new System.Windows.Forms.Padding(2);
+            this.GuessNextBut.Name = "GuessNextBut";
+            this.GuessNextBut.Size = new System.Drawing.Size(827, 42);
+            this.GuessNextBut.TabIndex = 12;
+            this.GuessNextBut.Text = "CLICK";
+            this.GuessNextBut.UseVisualStyleBackColor = true;
+            this.GuessNextBut.Visible = false;
+            this.GuessNextBut.Click += new System.EventHandler(this.GuessNextBut_Click);
+            // 
+            // GuessAnsLab
+            // 
+            this.GuessAnsLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.GuessAnsLab.Location = new System.Drawing.Point(11, 357);
+            this.GuessAnsLab.Name = "GuessAnsLab";
+            this.GuessAnsLab.Size = new System.Drawing.Size(828, 52);
+            this.GuessAnsLab.TabIndex = 13;
+            this.GuessAnsLab.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.GuessAnsLab.Visible = false;
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 550);
+            this.Controls.Add(this.GuessAnsLab);
+            this.Controls.Add(this.GuessNextBut);
+            this.Controls.Add(this.StartGuessingBut);
             this.Controls.Add(this.wAnsCLabel);
             this.Controls.Add(this.rAnsCLabel);
             this.Controls.Add(this.startInfo);
@@ -186,6 +225,9 @@
         private System.Windows.Forms.Label startInfo;
         private System.Windows.Forms.Label rAnsCLabel;
         private System.Windows.Forms.Label wAnsCLabel;
+        private System.Windows.Forms.Button StartGuessingBut;
+        private System.Windows.Forms.Button GuessNextBut;
+        private System.Windows.Forms.Label GuessAnsLab;
     }
 }
 
