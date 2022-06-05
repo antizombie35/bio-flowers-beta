@@ -125,11 +125,13 @@
             // startInfo
             // 
             this.startInfo.AutoSize = true;
+            this.startInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.startInfo.Location = new System.Drawing.Point(12, 31);
             this.startInfo.Name = "startInfo";
-            this.startInfo.Size = new System.Drawing.Size(119, 52);
+            this.startInfo.Size = new System.Drawing.Size(149, 80);
             this.startInfo.TabIndex = 8;
-            this.startInfo.Text = "load successful!\r\nloaded from: flowers.flist\r\nversion 1.4 beta \r\nmade by A35\r\n";
+            this.startInfo.Text = "load successful!\r\nloaded from: flowers.flist\r\nversion 1.6.2\r\nmade by A35\r\nSpecial" +
+    " thanks to H34";
             // 
             // rAnsCLabel
             // 
@@ -187,10 +189,11 @@
             // SupportLinkLab
             // 
             this.SupportLinkLab.AutoSize = true;
+            this.SupportLinkLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.SupportLinkLab.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.SupportLinkLab.Location = new System.Drawing.Point(12, 83);
+            this.SupportLinkLab.Location = new System.Drawing.Point(8, 111);
             this.SupportLinkLab.Name = "SupportLinkLab";
-            this.SupportLinkLab.Size = new System.Drawing.Size(369, 13);
+            this.SupportLinkLab.Size = new System.Drawing.Size(459, 16);
             this.SupportLinkLab.TabIndex = 14;
             this.SupportLinkLab.TabStop = true;
             this.SupportLinkLab.Text = "Help us expand and correct the list of flowers and pictures (opens in browser)";
