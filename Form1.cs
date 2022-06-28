@@ -89,7 +89,7 @@ namespace flowers
                 Console.WriteLine(rAns);
                 linkAnsLine = rawFlowers[rAnsIndex]; //line linkde by index
                 rAnsLinks = linkAnsLine.Split(','); //split line to strings
-                rAnsLink = rAnsLinks[r.Next(0, rAnsLinks.Length)]; //ch link
+                rAnsLink = rAnsLinks[r.Next(0, rAnsLinks.Length)];
                 Console.WriteLine(rAnsLink);
                 picBoxFlower.Load(rAnsLink);
 
